@@ -156,6 +156,9 @@ def send_one_ping(my_socket, dest_addr, ID):
     bytesInDouble = struct.calcsize("d")
     data = (192 - bytesInDouble) * "Q"
     data = struct.pack("d", default_timer()) + data
+    
+    # magic
+    # data = bytes(b'\x78\x56\x34\x12\xfa\xfb\xfc\xfd\x22\x01') + "0"
 
     # Calculate the checksum on the data and the dummy header.
     my_checksum = checksum(header + data)
